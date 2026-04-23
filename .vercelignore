@@ -1,0 +1,8 @@
+node_modules
+server.js
+start.bat
+test-mobile.html
+deploy.bat
+*.log
+.git
+.DS_Store

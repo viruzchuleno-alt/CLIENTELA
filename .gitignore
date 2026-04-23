@@ -33,7 +33,11 @@ build/
 *.temp
 .cache/
 
-# Server files (no necesarios para GitHub Pages)
+# Development files (no necesarios para Vercel)
 server.js
 start.bat
 test-mobile.html
+deploy.bat
+INSTRUCCIONES-DEPLOY.md
+EMPEZAR-AQUI.txt
+README.md

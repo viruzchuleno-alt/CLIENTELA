@@ -1265,10 +1265,8 @@
       <a href="https://matiasignacio.com" target="_blank" rel="noopener noreferrer" class="trabajo-image-link">
         <img
           class="trabajo-image"
-          src="Captura-de-pant.webp"
+          src="trabajo.webp"
           alt="Diseño web profesional - Visita matiasignacio.com"
-          loading="eager"
-          onerror="console.error('Error cargando imagen:', this.src); this.style.background='linear-gradient(135deg, #1a0a3d 0%, #2d1b69 40%, #7c3aed 100%)'; this.style.minHeight='300px';"
         />
       </a>
     </div>
@@ -1279,7 +1277,7 @@
   ============================================================ -->
   <section id="stat">
     <div class="container" style="display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap;">
-      <span class="stat-number" data-target="75">0%</span>
+      <span class="stat-number">75%</span>
       <p class="stat-text">
         de las personas juzga la credibilidad de un negocio basándose en su sitio web
         (especialmente su diseño)
@@ -1443,27 +1441,6 @@
     });
 
     // ============================================================
-    // CONTADOR ANIMADO 75%
-    // ============================================================
-    function animateCounter(element, target, duration = 2000) {
-      const start = 0;
-      const increment = target / (duration / 16); // 60fps
-      let current = start;
-
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          element.textContent = Math.floor(current) + '%';
-          requestAnimationFrame(updateCounter);
-        } else {
-          element.textContent = target + '%';
-        }
-      };
-
-      updateCounter();
-    }
-
-    // ============================================================
     // SCROLL REVEAL ANIMATIONS
     // ============================================================
     const observerOptions = {
@@ -1480,11 +1457,6 @@
           children.forEach((child, i) => {
             setTimeout(() => {
               child.classList.add('animate-in');
-              
-              // Si es el número estadístico, animar contador
-              if (child.classList.contains('stat-number') && child.dataset.target) {
-                animateCounter(child, parseInt(child.dataset.target), 2000);
-              }
             }, i * 100);
           });
 

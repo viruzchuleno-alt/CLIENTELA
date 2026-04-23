@@ -334,6 +334,30 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
+    /* Botón grande - el doble de tamaño */
+    .btn-large {
+      padding: 28px 64px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: calc(var(--radius-pill) * 1.2);
+      box-shadow: 0 8px 40px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-large svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .btn-large:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 50px rgba(124, 58, 237, 0.7);
+    }
+
+    .btn-large:active {
+      transform: translateY(-2px) scale(1.01);
+    }
+
     /* Ripple effect */
     .ripple {
       position: absolute;
@@ -1148,6 +1172,16 @@
         font-size: 0.75rem;
       }
 
+      .btn-large {
+        padding: 20px 40px;
+        font-size: 0.95rem;
+      }
+
+      .btn-large svg {
+        width: 20px;
+        height: 20px;
+      }
+
       /* Sections spacing */
       section {
         padding: var(--space-xl) 0;
@@ -1233,16 +1267,6 @@
     <h1 class="hero-title" data-text="Creación & Diseño">
       Creación<br />&amp; <span class="accent">Diseño</span>
     </h1>
-
-    <div class="hero-cta">
-      <a href="#trabajo" class="btn btn-outline">
-        <span>Saber más</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
   </section>
 
   <!-- ============================================================
@@ -1261,14 +1285,15 @@
         </p>
       </div>
 
-      <!-- Imagen destacada - clickeable -->
-      <a href="https://matiasignacio.com" target="_blank" rel="noopener noreferrer" class="trabajo-image-link">
-        <img
-          class="trabajo-image"
-          src="trabajo.webp"
-          alt="Diseño web profesional - Visita matiasignacio.com"
-        />
-      </a>
+      <!-- Botón CTA grande -->
+      <div style="text-align: center; margin-top: var(--space-lg);">
+        <a href="https://matiasignacio.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+          <span>Ver página de creador</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 

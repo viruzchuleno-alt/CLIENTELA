@@ -68,9 +68,26 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
       opacity: 0;
       animation: fadeInBody 0.6s ease 0.2s forwards;
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR - Glow morado
+    ============================================================ */
+    body {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32"><defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="16" cy="16" r="4" fill="%23a855f7" opacity="0.3" filter="url(%23glow)"/><circle cx="16" cy="16" r="1.5" fill="white"/></svg>') 16 16, auto;
+    }
+
+    a, button, .process-card, .trabajo-image-link {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><defs><filter id="glow"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="16" cy="16" r="6" fill="%237c3aed" opacity="0.5" filter="url(%23glow)"/><circle cx="16" cy="16" r="2" fill="white"/></svg>') 16 16, pointer;
+    }
+
+    @media (max-width: 768px) {
+      body, a, button, .process-card, .trabajo-image-link {
+        cursor: auto;
+      }
     }
 
     @keyframes fadeInBody {
@@ -119,48 +136,6 @@
       z-index: 9999;
       box-shadow: 0 0 10px var(--color-accent-glow);
       transition: width 0.1s ease;
-    }
-
-    /* ============================================================
-       CUSTOM CURSOR
-    ============================================================ */
-    .cursor {
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--color-accent-light);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-      opacity: 0;
-    }
-
-    .cursor-follower {
-      width: 8px;
-      height: 8px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.25s ease;
-      opacity: 0;
-    }
-
-    body:hover .cursor,
-    body:hover .cursor-follower {
-      opacity: 1;
-    }
-
-    .cursor.hover {
-      transform: scale(1.8);
-      background: rgba(124, 58, 237, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      body { cursor: auto; }
-      .cursor, .cursor-follower { display: none; }
     }
 
     img { display: block; max-width: 100%; }
@@ -275,7 +250,6 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      cursor: none;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border: none;
       outline: none;
@@ -611,7 +585,6 @@
     .trabajo-image-link {
       display: block;
       position: relative;
-      cursor: none;
       text-decoration: none;
     }
 
@@ -768,7 +741,6 @@
       border-radius: var(--radius-md);
       padding: var(--space-sm);
       position: relative;
-      cursor: none;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       min-width: 0;
       overflow: hidden;
@@ -817,7 +789,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: none;
       border: none;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
@@ -1242,10 +1213,6 @@
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress"></div>
 
-  <!-- Custom Cursor -->
-  <div class="cursor"></div>
-  <div class="cursor-follower"></div>
-
   <!-- ============================================================
        1. HERO
   ============================================================ -->
@@ -1434,42 +1401,6 @@
         loader.classList.add('hidden');
         setTimeout(() => loader.remove(), 500);
       }, 800);
-    });
-
-    // ============================================================
-    // CUSTOM CURSOR
-    // ============================================================
-    const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-    let followerX = 0, followerY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    function animateCursor() {
-      // Smooth cursor movement - velocidad ajustada para seguir mejor el mouse
-      cursorX += (mouseX - cursorX) * 0.8;
-      cursorY += (mouseY - cursorY) * 0.8;
-      
-      followerX += (mouseX - followerX) * 0.4;
-      followerY += (mouseY - followerY) * 0.4;
-
-      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-      cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px)`;
-
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Cursor hover effects
-    const hoverElements = document.querySelectorAll('a, button, .process-card');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
     // ============================================================
